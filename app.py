@@ -39,28 +39,43 @@ html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
     background: #161B22;
     border-right: 1px solid #30363D;
 }
+[data-testid="stSidebar"] label p,
 [data-testid="stSidebar"] .stSelectbox label,
 [data-testid="stSidebar"] .stSlider label,
-[data-testid="stSidebar"] p { color: #8B949E; font-size: 13px; }
+[data-testid="stSidebar"] p { 
+    color: #E6EDF3 !important; 
+    font-size: 13px; 
+    font-weight: 500;
+}
 
 /* === Tabs === */
-.stTabs [data-baseweb="tab-list"] {
+.stTabs [data-baseweb="tab-list"], div[data-testid="stTabBar"] {
     background: #161B22;
     border-radius: 10px;
-    padding: 4px;
-    gap: 4px;
+    padding: 6px;
+    gap: 8px;
     border: 1px solid #30363D;
 }
-.stTabs [data-baseweb="tab"] {
-    background: transparent;
-    color: #8B949E;
-    border-radius: 8px;
-    font-weight: 500;
-    font-size: 14px;
-    padding: 8px 18px;
+.stTabs [data-baseweb="tab"], button[data-testid="stTab"] {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 8px 18px !important;
+    transition: all 0.3s ease;
 }
-.stTabs [aria-selected="true"] {
+button[data-testid="stTab"] p {
+    color: #C9D1D9 !important; /* Plata claro de alta legibilidad para pestañas inactivas */
+    font-weight: 600 !important;
+    font-size: 14px !important;
+}
+button[data-testid="stTab"]:hover p {
+    color: #FFFFFF !important;
+}
+.stTabs [aria-selected="true"], button[data-testid="stTab"][aria-selected="true"] {
     background: linear-gradient(135deg, #1F6FEB, #6E40C9) !important;
+    box-shadow: 0 4px 12px rgba(31, 111, 235, 0.3) !important;
+}
+.stTabs [aria-selected="true"] p, button[data-testid="stTab"][aria-selected="true"] p {
     color: #FFFFFF !important;
 }
 
