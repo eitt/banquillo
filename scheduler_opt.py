@@ -5,12 +5,11 @@ import datetime
 import sqlite3
 
 # Ensure Banquillo directory is in path for db_manager import
-sys.path.append(r"C:\Users\LEONA\Documents\GitHub\Banquillo")
-try:
-    import db_manager
-except ImportError:
-    # Fallback to local import if run from the same folder
-    import db_manager
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+if BASE_DIR not in sys.path:
+    sys.path.insert(0, BASE_DIR)
+
+import db_manager
 
 def parse_date(d):
     """Parses a date string or object to a datetime.date object."""
@@ -577,7 +576,7 @@ def optimizar_horarios(barrio, fecha_inicio, fecha_fin, db_path=None, pop_size=1
 
 if __name__ == '__main__':
     # Script de prueba
-    db_file = r"C:\Users\LEONA\Documents\GitHub\Banquillo\banquillo.db"
+    db_file = os.path.join(BASE_DIR, "banquillo.db")
     barrio_test = "La Cumbre"
     start_date = "2025-12-01"
     end_date = "2025-12-31"
