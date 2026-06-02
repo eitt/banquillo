@@ -249,7 +249,7 @@ with tab1:
                          template="plotly_dark")
             fig.update_layout(paper_bgcolor="#161B22", plot_bgcolor="#161B22",
                               coloraxis_showscale=False, margin=dict(l=0,r=0,t=10,b=0))
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, width='stretch')
         else:
             st.info("Sin asignaciones en este periodo.")
 
@@ -273,7 +273,7 @@ with tab1:
                                paper_bgcolor="#161B22", plot_bgcolor="#161B22",
                                legend=dict(orientation="h", y=1.1),
                                margin=dict(l=0, r=0, t=10, b=0))
-            st.plotly_chart(fig2, use_container_width=True)
+            st.plotly_chart(fig2, width='stretch')
         else:
             st.info("Sin citas registradas en este periodo.")
 
@@ -308,7 +308,7 @@ with tab2:
             df_o[["id","nombre","contacto","max_horas_semanales"]].rename(columns={
                 "id":"ID","nombre":"Nombre","contacto":"Contacto","max_horas_semanales":"Máx. horas/sem"
             }),
-            use_container_width=True, num_rows="fixed",
+            width='stretch', num_rows="fixed",
             disabled=["ID"], key="o_editor", hide_index=True
         )
         col_save, col_del = st.columns([2, 1])
@@ -343,7 +343,7 @@ with tab2:
             st.dataframe(df_d[["id","dia_semana","fecha","hora_inicio","hora_fin","barrio"]].rename(columns={
                 "id":"ID","dia_semana":"Día","fecha":"Fecha",
                 "hora_inicio":"Desde","hora_fin":"Hasta","barrio":"Barrio"
-            }), use_container_width=True, hide_index=True)
+            }), width='stretch', hide_index=True)
         else:
             st.info("Este orientador no tiene disponibilidades registradas.")
 
@@ -412,7 +412,7 @@ with tab3:
 
         edited = st.data_editor(
             df_edit,
-            use_container_width=True,
+            width='stretch',
             num_rows="fixed",
             disabled=["ID Cita","Fecha","Inicio","Fin","Orientador"],
             column_config={
@@ -505,7 +505,7 @@ with tab4:
                 fig_hr.update_layout(paper_bgcolor="#161B22", plot_bgcolor="#161B22",
                                      coloraxis_showscale=False,
                                      margin=dict(l=0,r=0,t=10,b=0))
-                st.plotly_chart(fig_hr, use_container_width=True)
+                st.plotly_chart(fig_hr, width='stretch')
         else:
             st.error("No se encontraron turnos para optimizar en el rango especificado.")
 
